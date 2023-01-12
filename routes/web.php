@@ -37,3 +37,7 @@ Route::get('/tasks', function () {
     return view('tasks');
 });
 
+Route::get('/tasks/new', function () {
+    return view('tasks_new');
+});
+
