@@ -1,0 +1,96 @@
+@extends('layouts.app')
+@section('title') Tasks @endsection
+@section('content')
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h2>Tarefas</h2>
+            </div>
+            <div class="col-12">
+                <div class="d-flex gap-5">
+                    <a href="/" class="btn btn-dark">Voltar</a>
+                    <a href="/tasks/new" class="btn btn-primary">Nova tarefa</a>
+                </div>
+            </div>
+            <div class="col-12 py-3">
+                @if (isset($message))
+                <div class="alert {{$class_alert}}" role="alert">
+                    {{ $message }}
+                </div>
+                @endif
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">ID do autor</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @if (isset($tarefas)))
+                            @for ($i = 0; $i < count($tarefas); $i++)
+                                <tr>
+                                    <th scope="row">{{ tarefas.id }}</th>
+                                    <td>{{ tarefas.title }}</td>
+                                    <td>{{ tarefas.userId }}</td>
+                                    <td> 
+                                        @if ($tarefa->completed == true)
+                                            <span class="badge badge-success text-bg-success ">Concluído</span>
+                                        @else
+                                            <span class="badge badge-danger text-bg-danger">Não concluído</span>
+                                        @endif
+                                    </td>
+                                
+                                    <td>
+                                        <a href="#deleteTarefa" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteTarefa" data-id="{{ tarefas.id }}">Deletar</a>
+                                    </td>
+                                </tr>
+                            @endfor
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteTarefa" tabindex="-1" aria-labelledby="deleteTarefaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteTarefaLabel">Deletar tarefa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente deletar a tarefa?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <!--receber id da tarefa clicada-->
+                    <a href="#" class="btn btn-danger" id="deleteTarefaButton">Deletar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //pegar id da tarefa clicada e passar para o botão deletar da modal de confirmação js puro
+        const deleteTarefaButton = document.getElementById('deleteTarefaButton');
+        const deleteTarefa = document.getElementById('deleteTarefa');
+        deleteTarefa.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const id = button.getAttribute('data-id');
+            deleteTarefaButton.setAttribute('href', '/tarefas/' + id + '/deletar');
+        });   
+    </script>
+
+
+@endsection
