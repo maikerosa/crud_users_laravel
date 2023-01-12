@@ -10,15 +10,7 @@
                     O que deseja fazer?
                 </div>
                 <div class="d-flex gap-3 mt-3 justify-content-center align-items-center">
-                    <a href="/posts" class="text-decoration-none ">
-                        <div class="card btn btn-outline-dark">
-                            <div class="card-body">
-                                <i class="ph-signpost fs-3"></i>
-                                <h5 class="card-title">Posts</h5>
-                                <p class="card-text">Aqui você pode ver todos os posts</p>
-                            </div>
-                        </div>
-                    </a>
+            
                     <a href="/users" class="text-decoration-none ">
                         <div class="card btn btn-outline-dark">
                             <div class="card-body">

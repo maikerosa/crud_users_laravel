@@ -15,16 +15,18 @@
                 </div>
             </div>
             <div class="col-12 py-4">
-                @if (isset($message))
-                <div class="alert {{$class_alert}}" role="alert">
-                    {{ $message }}
+                @if (isset($status))
+                <div class="alert {{$status['class_alert']}}" role="alert">
+                    {{ $status['message'] }}
                 </div>
                 @endif
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="/novo-usuario" method="POST">
+                <form action="{{route('users_edit')}}" method="POST">
+                    @csrf
+                    @method('POST')
                     <div class="row"> 
                         <div class="mb-3 col-sm-12 col-md-6">
                             <label for="name" class="form-label">Nome</label>
@@ -38,43 +40,7 @@
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                         </div>
-                        <div class="mb-3 col-sm-12 col-md-6">
-                            <label for="phone" class="form-label">Telefone</label>
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Telefone">
-                        </div>
-                        <div class="mb-3 col-sm-12 col-md-6">
-                            <label for="website" class="form-label">Website</label>
-                            <input type="text" class="form-control" id="website" name="website" placeholder="Website">
-                        </div>
-                        <div class="mb-3">
-                            <label for="company" class="form-label">Empresa</label>
-                            <input type="text" class="form-control" id="company" name="company" placeholder="Empresa">
-                        </div>
-                        <div class="mb-3 col-sm-12 col-md-6">
-                            <label for="eddress_street" class="form-label">Endereço</label>
-                            <input type="text" class="form-control" id="eddress_street" name="eddress_street" placeholder="Endereço">
-                        </div>
-                        <div class="mb-3 col-sm-12 col-md-6">
-                            <label for="city" class="form-label">Cidade</label>
-                            <input type="text" class="form-control" id="city" name="city" placeholder="Cidade">
-                        </div>
-                        <div class="mb-3 col-sm-6 col-md-6">
-                            <label for="eddress_suite" class="form-label">Complemento</label>
-                            <input type="text" class="form-control" id="eddress_suite" name="eddress_suite" placeholder="Complemento">
-                        </div>
-                        <div class="mb-3 col-sm-6 col-md-6">
-                            <label for="zipcode" class="form-label">CEP</label>
-                            <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="CEP">
-                        </div>
-                        <div class="mb-3 col-6">
-                            <label for="lat" class="form-label">Latitude</label>
-                            <input type="text" class="form-control" id="lat" name="lat" placeholder="Latitude">
-                        </div>
-                        <div class="mb-3 col-6">
-                            <label for="lng" class="form-label">Longitude</label>
-                            <input type="text" class="form-control" id="lng" name="lng" placeholder="Longitude">
-                            <div id="mapid"></div>
-                        </div>
+                     
                     </div>
                     <button type="submit" class="btn btn-primary">Criar</button>
                 </form>

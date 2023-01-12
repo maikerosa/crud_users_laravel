@@ -12,9 +12,9 @@
                 </div>
             </div>
             <div class="col-12 py-4">
-                @if (isset($message))
-                <div class="alert {{$class_alert}}" role="alert">
-                    {{ $message }}
+                @if (isset($status))
+                <div class="alert {{$status['class_alert']}}" role="alert">
+                    {{ $status['message'] }}
                 </div>
                 @endif
             </div>

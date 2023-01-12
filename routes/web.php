@@ -1,43 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller as ViewController;
+use App\Http\Controllers\UserController as UserController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// view
+Route::get('/', [ViewController::class, 'index']);
+Route::match(['get', 'delete'],'/users', [ViewController::class, 'users'])->name('users');
+Route::match(['get', 'post'],'/users/new', [ViewController::class, 'new_user'])->name('users_edit');
+Route::get('/users/{id}', [ViewController::class, 'user_details']);
+Route::put('/users/{id}', [UserController::class, 'update_user']);
+Route::delete('/users/{id}', [UserController::class, 'delete_user']);
 
-Route::get('/posts', function () {
-    return view('post');
-});
 
-Route::get('/posts/new', function () {
-    return view('new_post');
-});
 
-Route::get('/users', function () {
-    return view('users');
-});
-
-Route::get('/users/new', function () {
-    return view('new_user');
-});
-
-Route::get('/tasks', function () {
-    return view('tasks');
-});
-
-Route::get('/tasks/new', function () {
-    return view('tasks_new');
-});
 
