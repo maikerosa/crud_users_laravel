@@ -82,13 +82,12 @@
     </div>
 
     <script>
-        //pegar id da tarefa clicada e passar para o botão deletar da modal de confirmação js puro
         const deleteTarefaButton = document.getElementById('deleteTarefaButton');
         const deleteTarefa = document.getElementById('deleteTarefa');
         deleteTarefa.addEventListener('show.bs.modal', function (event) {
             const button = event.relatedTarget;
             const id = button.getAttribute('data-id');
-            deleteTarefaButton.setAttribute('href', '/tarefas/' + id + '/deletar');
+            deleteTarefaButton.setAttribute('href', '/tasks/' + id + '/delete');
         });   
     </script>
 

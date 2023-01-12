@@ -37,11 +37,11 @@
                         @if (isset($users))
                             @for ($i = 0; $i < count($users); $i++)
                                 <tr>
-                                    <td>{{ user.id }}</td>
-                                    <td>{{ user.name }}</td>
-                                    <td>{{ user.email }}</td>
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
                                     <td>
-                                        <a href="/users/{{ user.id }}" class="btn btn-primary">Ver todos os detalhes</a>
+                                        <a href="/users/{{ $user->id }}" class="btn btn-primary">Ver todos os detalhes</a>
                                     </td>
                                 </tr>
                             @endfor
